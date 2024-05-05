@@ -1,0 +1,6 @@
+src/MasterNet.Domain/bin/
+src/MasterNet.Domain/obj/
+src/MasterNet.Persistence/bin/
+src/MasterNet.Persistence/obj/
+src/MasterNet.WebApi/bin/
+src/MasterNet.WebApi/obj/
