@@ -5,3 +5,5 @@ src/MasterNet.Persistence/obj/
 src/MasterNet.WebApi/bin/
 src/MasterNet.WebApi/obj/
 src/MasterNet.Persistence/LocalDatabase.db
+src/MasterNet.Application/bin/
+src/MasterNet.Application/obj/
