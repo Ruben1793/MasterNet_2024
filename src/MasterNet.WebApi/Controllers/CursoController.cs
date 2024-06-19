@@ -19,6 +19,5 @@ public class CursoController : ControllerBase {
         var command = new CursoCreateCommandRequest(request);
         var resultado = await _sender.Send(command);
         return Ok(resultado);
-
     }
 }

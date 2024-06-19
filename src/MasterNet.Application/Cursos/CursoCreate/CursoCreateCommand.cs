@@ -27,7 +27,7 @@ public class CursoCreateCommand
             FechaPulicacion = DateTime.Now
            };
             _context.Add(curso);
-           await _context.SaveChangesAsync();
+           await _context.SaveChangesAsync(cancellationToken);
 
            return curso.Id;
         } 

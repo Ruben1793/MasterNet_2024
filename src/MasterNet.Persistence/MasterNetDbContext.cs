@@ -8,18 +8,15 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 public class MasterNetDbContext : IdentityDbContext<AppUser> {
+    public MasterNetDbContext(DbContextOptions<MasterNetDbContext> options) : base(options) 
+    {
+
+    }
 
     public DbSet<Curso>? Cursos{ get; set; }
     public DbSet<Instructor>? Instructores {get; set; }
-    public DbSet<Precio>? PrecioS { get; set; }
-    public DbSet<Calificacion>? CalificacioneS { get; set;}
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-       optionsBuilder.UseSqlite("Data Source=LocalDatabase.db")
-       .LogTo(Console.WriteLine, new[] {DbLoggerCategory.Database.Command.Name}, Microsoft.Extensions.Logging.LogLevel.Information)
-       .EnableSensitiveDataLogging();
-    }
+    public DbSet<Precio>? Precios { get; set; }
+    public DbSet<Calificacion>? Calificaciones { get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,7 +28,7 @@ public class MasterNetDbContext : IdentityDbContext<AppUser> {
         modelBuilder.Entity<CursoInstructor>().ToTable("cursos_instructores");
         modelBuilder.Entity<Precio>().ToTable("precios");
         modelBuilder.Entity<CursoPrecio>().ToTable("cursos_precios");
-        modelBuilder.Entity<Calificacion>().ToTable("calificacion");
+        modelBuilder.Entity<Calificacion>().ToTable("calificaciones");
         modelBuilder.Entity<Photo>().ToTable("imagenes");
 
         //Column properties
