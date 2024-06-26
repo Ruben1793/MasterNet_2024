@@ -7,3 +7,6 @@ src/MasterNet.WebApi/obj/
 src/MasterNet.Persistence/LocalDatabase.db
 src/MasterNet.Application/bin/
 src/MasterNet.Application/obj/
+src/MasterNet.Application/bin/
+src/MasterNet.Infrastructure/bin/
+src/MasterNet.Infrastructure/obj/

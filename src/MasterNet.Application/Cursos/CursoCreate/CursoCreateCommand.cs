@@ -11,7 +11,6 @@ public class CursoCreateCommand
 
     internal class CursoCreateCommandHandler : IRequestHandler<CursoCreateCommandRequest, Guid>
     {
-        
         private readonly MasterNetDbContext _context;
 
         public CursoCreateCommandHandler(MasterNetDbContext context) {
