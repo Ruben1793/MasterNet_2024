@@ -1,5 +1,6 @@
 namespace MasterNet.Application.Cursos.CursoCreate;
 
+using FluentValidation;
 using MasterNet.Application.Core;
 using MasterNet.Domain;
 using MasterNet.Persistence;
@@ -30,6 +31,14 @@ public class CursoCreateCommand
             var resultado = await _context.SaveChangesAsync(cancellationToken) > 0;
             return resultado ? Result<Guid>.Success(curso.Id) : Result<Guid>.Failure("No se pudo crear el curso") ;
         } 
+    }
+
+    public class CursoCreateCommandRequestValidator : AbstractValidator<CursoCreateCommandRequest>
+    {
+        public CursoCreateCommandRequestValidator()
+        {
+            RuleFor(x => x.cursoCreateRequest).SetValidator(new CursoCreateValidator());
+        }
     }
 }
 
