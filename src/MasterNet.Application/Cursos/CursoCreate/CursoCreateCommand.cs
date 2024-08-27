@@ -25,7 +25,7 @@ public class CursoCreateCommand
             Id = Guid.NewGuid(),
             Titulo = request.cursoCreateRequest.Titulo,
             Descripcion = request.cursoCreateRequest.Descripcion,
-            FechaPulicacion = DateTime.Now
+            FechaPublicacion = DateTime.Now
            };
             _context.Add(curso);
             var resultado = await _context.SaveChangesAsync(cancellationToken) > 0;

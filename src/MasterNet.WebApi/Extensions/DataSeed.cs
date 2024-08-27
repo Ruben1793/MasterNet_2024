@@ -16,7 +16,7 @@ public static class DataSeed
             var loggerFactory = service.GetRequiredService<ILoggerFactory>();
 
             try {
-                var context = service.GetService<MasterNetDbContext>();
+                var context = service.GetRequiredService<MasterNetDbContext>();
                 await context.Database.MigrateAsync();
                 var userManager = service.GetRequiredService<UserManager<AppUser>>();
                 if (!userManager.Users.Any()) {
@@ -38,7 +38,7 @@ public static class DataSeed
                 }
 
                 var cursos = await context.Cursos!.Take(10).Skip(0).ToListAsync();
-                if (context.Set<CursoInstructor>().Any()) {
+                if (!context.Set<CursoInstructor>().Any()) {
                         var instructores = await context.Instructores!.Take(10).Skip(0).ToListAsync();
                         foreach (var curso in cursos)
                         {

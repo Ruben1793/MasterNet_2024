@@ -61,7 +61,7 @@ namespace MasterNet.Persistence.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Titulo = table.Column<string>(type: "TEXT", nullable: true),
                     Descripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    FechaPulicacion = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    FechaPublicacion = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -203,7 +203,7 @@ namespace MasterNet.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "calificacion",
+                name: "calificaciones",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -214,9 +214,9 @@ namespace MasterNet.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_calificacion", x => x.Id);
+                    table.PrimaryKey("PK_calificaciones", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_calificacion_cursos_CursoId",
+                        name: "FK_calificaciones_cursos_CursoId",
                         column: x => x.CursoId,
                         principalTable: "cursos",
                         principalColumn: "Id",
@@ -295,24 +295,24 @@ namespace MasterNet.Persistence.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4a977e07-a257-44c9-886f-fd6403888020", null, "ADMIN", "ADMIN" },
-                    { "ad6c2a90-f6da-4d64-96c3-ab1f0c38d96d", null, "CLIENT", "CLIENT" }
+                    { "17413a6f-8689-4caf-bc9c-f6c0776ac1dd", null, "CLIENT", "CLIENT" },
+                    { "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0", null, "ADMIN", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "cursos",
-                columns: new[] { "Id", "Descripcion", "FechaPulicacion", "Titulo" },
+                columns: new[] { "Id", "Descripcion", "FechaPublicacion", "Titulo" },
                 values: new object[,]
                 {
-                    { new Guid("3c2b51ec-b1f2-46db-af60-7e9662e191db"), "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6484), "Handmade Rubber Gloves" },
-                    { new Guid("45867903-7f6f-4e00-ab1f-d65a085f1312"), "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6442), "Generic Granite Car" },
-                    { new Guid("6824e892-b461-4556-b5e5-e0b0e7099039"), "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6324), "Sleek Metal Salad" },
-                    { new Guid("6b07a0cc-f8f1-43b8-b17f-e6b217443ade"), "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6401), "Awesome Wooden Towels" },
-                    { new Guid("82111fb4-b0f3-40cd-a1dd-5542b6f44e73"), "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6233), "Licensed Concrete Hat" },
-                    { new Guid("9f102b1d-c0a5-4693-a92a-8d2c8aa4a45d"), "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6359), "Refined Cotton Mouse" },
-                    { new Guid("a010f105-c86b-40f9-963f-db096a5555ad"), "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6304), "Sleek Cotton Mouse" },
-                    { new Guid("a1a7f0ed-1d5c-4392-8a63-d112ba006cf0"), "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6463), "Practical Rubber Pizza" },
-                    { new Guid("de1ef256-d2b2-416f-b082-86ae66b4e2d1"), "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016", new DateTime(2024, 6, 10, 20, 20, 25, 235, DateTimeKind.Local).AddTicks(6380), "Generic Frozen Chair" }
+                    { new Guid("029df3e7-5c6b-4e20-a866-a3e37ff09a10"), "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7906), "Gorgeous Granite Bacon" },
+                    { new Guid("0742ae48-f6a0-4692-8372-49ff0f174c43"), "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7847), "Fantastic Wooden Pizza" },
+                    { new Guid("355717d2-5b8b-4dd1-a85d-7ce3bb9c4b30"), "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7929), "Sleek Plastic Pizza" },
+                    { new Guid("55c3b082-9596-42ee-b8ab-e8db113dca21"), "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7971), "Small Steel Soap" },
+                    { new Guid("6e3dfadc-4fd9-4d43-9364-6310a725d874"), "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(8025), "Sleek Wooden Shirt" },
+                    { new Guid("7712ec8f-b5b9-499f-b4d1-8b6baffebe39"), "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7884), "Handcrafted Rubber Pizza" },
+                    { new Guid("85cf239b-a387-461b-853c-e3b83b6be424"), "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(8099), "Handmade Fresh Shoes" },
+                    { new Guid("9babdf79-213b-41a8-b1a1-7329077d45a6"), "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(8007), "Refined Steel Fish" },
+                    { new Guid("c2d5dff8-c4ba-49d8-88c5-f76b449909cb"), "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support", new DateTime(2024, 7, 16, 19, 51, 28, 584, DateTimeKind.Local).AddTicks(7949), "Refined Metal Car" }
                 });
 
             migrationBuilder.InsertData(
@@ -320,42 +320,42 @@ namespace MasterNet.Persistence.Migrations
                 columns: new[] { "Id", "Apellidos", "Grado", "Nombre" },
                 values: new object[,]
                 {
-                    { new Guid("02ce2ece-491a-4400-b2c8-d24992bab593"), "Predovic", "Corporate Implementation Analyst", "Hollis" },
-                    { new Guid("12bc591b-64d5-4fe2-b9b7-b3679ce33351"), "Cremin", "Lead Assurance Agent", "Melvin" },
-                    { new Guid("38b0b4e8-40c1-4f39-88b5-570ded413ece"), "Graham", "Direct Interactions Associate", "Samantha" },
-                    { new Guid("4d96de25-8cc9-49e2-bad9-de6a20849f58"), "Wolf", "Customer Group Director", "Novella" },
-                    { new Guid("59d7e758-6c8e-40a0-b91c-afc8ef6157e6"), "Hessel", "Future Data Liaison", "Olin" },
-                    { new Guid("97b3161f-9290-4582-a223-eb5e1346fd75"), "McCullough", "Product Configuration Agent", "Rowland" },
-                    { new Guid("9fb1bffc-238a-4034-8462-8882b7500112"), "King", "Corporate Interactions Assistant", "Destany" },
-                    { new Guid("ad5d6cef-0d63-44b1-ab51-c3c1d25130b5"), "Gottlieb", "International Directives Developer", "Loraine" },
-                    { new Guid("c35b9822-3b53-4ff6-b452-e6fcfb0660b1"), "Zboncak", "Senior Web Strategist", "Loyce" },
-                    { new Guid("f0c7aff0-0988-4b89-be9a-3432598c0287"), "Leuschke", "Product Accounts Coordinator", "Ambrose" }
+                    { new Guid("13af121d-1c54-4631-8ac6-a4ad12eb3f64"), "Kuhn", "Legacy Marketing Agent", "Laverne" },
+                    { new Guid("187c9942-a05e-4b5e-906f-b16daee57c90"), "Jaskolski", "Chief Infrastructure Strategist", "Lysanne" },
+                    { new Guid("5f281d67-b72d-4c2e-9407-4aada86e29be"), "Fisher", "District Solutions Architect", "Ramona" },
+                    { new Guid("9240db9e-5891-4965-98a9-da6dbb64b654"), "Grady", "Legacy Tactics Developer", "Ellie" },
+                    { new Guid("ad9007df-0ddf-492f-8707-a9157075af12"), "Schumm", "Direct Metrics Coordinator", "Bernadette" },
+                    { new Guid("b3cc997d-02a0-4ef5-ad3a-12a841fc1076"), "Gleichner", "Senior Integration Executive", "Trinity" },
+                    { new Guid("d001ad18-b855-43dd-ba15-ae10b2bb4ed9"), "Smitham", "Dynamic Configuration Technician", "Josefa" },
+                    { new Guid("d0e3ef34-e4eb-48c9-846c-310416024c05"), "Kilback", "Forward Accountability Director", "Raleigh" },
+                    { new Guid("dbbcdd9b-cba5-463b-9cbb-0587cabea11c"), "Friesen", "Dynamic Usability Liaison", "Jovan" },
+                    { new Guid("dd874c1b-603b-4d36-8c17-0496fd85980d"), "Harber", "Chief Accountability Architect", "Vella" }
                 });
 
             migrationBuilder.InsertData(
                 table: "precios",
                 columns: new[] { "Id", "Nombre", "PrecioActual", "PrecioPromocion" },
-                values: new object[] { new Guid("3a390a7c-e008-43c8-9dff-c3a126af5250"), "Precio Regular", 10.0m, 8.0m });
+                values: new object[] { new Guid("59f3a9d8-50c6-4e65-bff9-b03d8d9d75ae"), "Precio Regular", 10.0m, 8.0m });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoleClaims",
                 columns: new[] { "Id", "ClaimType", "ClaimValue", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, "POLICIES", "CURSO_READ", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 2, "POLICIES", "CURSO_UPDATE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 3, "POLICIES", "CURSO_WRITE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 4, "POLICIES", "CURSO_DELETE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 5, "POLICIES", "INSTRUCTOR_CREATE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 6, "POLICIES", "INSTRUCTOR_READ", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 7, "POLICIES", "INSTRUCTOR_UPDATE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 8, "POLICIES", "COMENTARIO_READ", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 9, "POLICIES", "COMENTARIO_DELETE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 10, "POLICIES", "COMENTARIO_CREATE", "4a977e07-a257-44c9-886f-fd6403888020" },
-                    { 11, "POLICIES", "CURSO_READ", "ad6c2a90-f6da-4d64-96c3-ab1f0c38d96d" },
-                    { 12, "POLICIES", "INSTRUCTOR_READ", "ad6c2a90-f6da-4d64-96c3-ab1f0c38d96d" },
-                    { 13, "POLICIES", "COMENTARIO_READ", "ad6c2a90-f6da-4d64-96c3-ab1f0c38d96d" },
-                    { 14, "POLICIES", "COMENTARIO_CREATE", "ad6c2a90-f6da-4d64-96c3-ab1f0c38d96d" }
+                    { 1, "POLICIES", "CURSO_READ", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 2, "POLICIES", "CURSO_UPDATE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 3, "POLICIES", "CURSO_WRITE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 4, "POLICIES", "CURSO_DELETE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 5, "POLICIES", "INSTRUCTOR_CREATE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 6, "POLICIES", "INSTRUCTOR_READ", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 7, "POLICIES", "INSTRUCTOR_UPDATE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 8, "POLICIES", "COMENTARIO_READ", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 9, "POLICIES", "COMENTARIO_DELETE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 10, "POLICIES", "COMENTARIO_CREATE", "1c95a471-4dfa-45b7-a73f-38e2fc0d87f0" },
+                    { 11, "POLICIES", "CURSO_READ", "17413a6f-8689-4caf-bc9c-f6c0776ac1dd" },
+                    { 12, "POLICIES", "INSTRUCTOR_READ", "17413a6f-8689-4caf-bc9c-f6c0776ac1dd" },
+                    { 13, "POLICIES", "COMENTARIO_READ", "17413a6f-8689-4caf-bc9c-f6c0776ac1dd" },
+                    { 14, "POLICIES", "COMENTARIO_CREATE", "17413a6f-8689-4caf-bc9c-f6c0776ac1dd" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -396,8 +396,8 @@ namespace MasterNet.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_calificacion_CursoId",
-                table: "calificacion",
+                name: "IX_calificaciones_CursoId",
+                table: "calificaciones",
                 column: "CursoId");
 
             migrationBuilder.CreateIndex(
@@ -435,7 +435,7 @@ namespace MasterNet.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "calificacion");
+                name: "calificaciones");
 
             migrationBuilder.DropTable(
                 name: "cursos_instructores");

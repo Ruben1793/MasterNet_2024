@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 public class MasterNetDbContext : IdentityDbContext<AppUser> {
     public MasterNetDbContext(DbContextOptions<MasterNetDbContext> options) : base(options) 
     {
-
     }
 
     public DbSet<Curso>? Cursos{ get; set; }
@@ -43,7 +42,7 @@ public class MasterNetDbContext : IdentityDbContext<AppUser> {
         //Many to Many relationships
         modelBuilder.Entity<Curso>().HasMany(m => m.Precios).WithMany(m => m.Cursos)
                                                                     .UsingEntity<CursoPrecio>(
-                                                                        j => j.HasOne(p => p.Precio).WithMany(p => p.CursosPrecios).HasForeignKey(p => p.PrecioId), 
+                                                                        j => j.HasOne(p => p.Precio).WithMany(p => p.CursoPrecios).HasForeignKey(p => p.PrecioId), 
                                                                         j => j.HasOne(p => p.Curso) .WithMany(p => p.CursoPrecios).HasForeignKey(p => p.CursoId), 
                                                                          j => { 
                                                                                 j.HasKey( t => new { t.PrecioId, t.CursoId}); 
@@ -51,7 +50,7 @@ public class MasterNetDbContext : IdentityDbContext<AppUser> {
                                                                     ); 
         modelBuilder.Entity<Curso>().HasMany(m => m.Instructores).WithMany(m => m.Cursos)
                                                                     .UsingEntity<CursoInstructor>(
-                                                                        j => j.HasOne(p => p.Instructor).WithMany(m => m.CursosInstructores).HasForeignKey(p => p.InstructorId),
+                                                                        j => j.HasOne(p => p.Instructor).WithMany(m => m.CursoInstructores).HasForeignKey(p => p.InstructorId),
                                                                         j => j.HasOne(p => p.Curso).WithMany(m => m.CursoInstructores).HasForeignKey(p => p.CursoId),
                                                                         j => {
                                                                             j.HasKey(t => new {t.InstructorId, t.CursoId});
@@ -185,7 +184,7 @@ public class MasterNetDbContext : IdentityDbContext<AppUser> {
                 Id = cursoId,
                 Descripcion = faker.Commerce.ProductDescription(),
                 Titulo = faker.Commerce.ProductName(),
-                FechaPulicacion = DateTime.Now,
+                FechaPublicacion = DateTime.Now,
             });
         }
         var precioId = Guid.NewGuid();

@@ -1,10 +1,10 @@
 using MasterNet.Application.Core;
 using MasterNet.Application.Cursos.CursoCreate;
-using MasterNet.Application.Cursos.CursoReporteExcel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using static MasterNet.Application.Cursos.CursoCreate.CursoCreateCommand;
 using static MasterNet.Application.Cursos.CursoReporteExcel.CursoReporteExcel;
+using static MasterNet.Application.Cursos.GetCurso.GetCursoQuery;
 
 namespace MasterNet.WebApi.Controllers;
 
@@ -21,6 +21,14 @@ public class CursoController : ControllerBase {
     public async Task<ActionResult<Result<Guid>>> CursoCreate([FromForm] CursoCreateRequest request, CancellationToken cancellationToken) {
         var command = new CursoCreateCommandRequest(request);
         return await _sender.Send(command);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> CursoGet(Guid id, CancellationToken cancellationToken)
+    {
+        var query = new GetCursoQueryRequest{Id = id};
+        var resultado = await _sender.Send(query, cancellationToken);
+        return resultado.IsSuccess ? Ok(resultado.Value) : BadRequest();
     }
 
     [HttpGet("report")]
