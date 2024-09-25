@@ -1,11 +1,12 @@
 using MasterNet.Application.Core;
 using MasterNet.Application.Cursos.CursoCreate;
+using MasterNet.Application.Cursos.GetCursos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static MasterNet.Application.Core.GetCursoQuery;
 using static MasterNet.Application.Cursos.CursoCreate.CursoCreateCommand;
 using static MasterNet.Application.Cursos.CursoReporteExcel.CursoReporteExcel;
 using static MasterNet.Application.Cursos.GetCurso.GetCursoQuery;
+using static MasterNet.Application.Cursos.GetCursos.GetCursoQuery;
 
 namespace MasterNet.WebApi.Controllers;
 

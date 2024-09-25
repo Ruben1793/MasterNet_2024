@@ -1,27 +1,28 @@
 using System.Linq.Expressions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using MasterNet.Application.Core;
 using MasterNet.Application.Cursos.GetCurso;
 using MasterNet.Domain;
 using MasterNet.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace MasterNet.Application.Core;
+namespace MasterNet.Application.Cursos.GetCursos;
 
-public  class GetCursoQuery 
+public class GetCursoQuery 
 {
-    public record GetCursosQueryRequest: IRequest<Result<PagedList<CursoResponse>>>
+    public record GetCursosQueryRequest : IRequest<Result<PagedList<CursoResponse>>>
     {
         public GetCursosRequest? CursosRequest { get; set; }
     }
 
-    internal class GetCursoQueryHandler : IRequestHandler<GetCursosQueryRequest, Result<PagedList<CursoResponse>>>
+    internal class GetCursosQueryHandler : IRequestHandler<GetCursosQueryRequest, Result<PagedList<CursoResponse>>>
     {
         private readonly MasterNetDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetCursoQueryHandler(MasterNetDbContext context, IMapper mapper)
+        public GetCursosQueryHandler(MasterNetDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -34,20 +35,20 @@ public  class GetCursoQuery
                                                         .Include(x => x.Precios);
 
             var predicate = ExpressionBuilder.New<Curso>();
-            if (!string .IsNullOrEmpty(request.CursosRequest!.Titulo)) {
+            if (!string.IsNullOrEmpty(request.CursosRequest!.Titulo)) {
                 predicate = predicate.And(y => y.Titulo!.ToLower().Contains(request.CursosRequest.Titulo.ToLower()));
             }
-            if (!string .IsNullOrEmpty(request.CursosRequest!.Descripcion)) {
+            if (!string.IsNullOrEmpty(request.CursosRequest!.Descripcion)) {
                 predicate = predicate.And(y => y.Descripcion!.ToLower().Contains(request.CursosRequest.Descripcion.ToLower()));
             }
-            if (string .IsNullOrEmpty(request.CursosRequest!.OrderBy)){
+            if (!string.IsNullOrEmpty(request.CursosRequest!.OrderBy)) {
                 Expression<Func<Curso, object>>? orderBySelector = request.CursosRequest.OrderBy!.ToLower() switch 
                 {
-                    "titulo" => curso=>curso.Titulo!,
-                    "description" => curso => curso.Descripcion!,
+                    "titulo" => curso => curso.Titulo!,
+                    "descripcion" => curso => curso.Descripcion!,
                     _ => curso => curso.Titulo!
                 };
-                bool orderBy = request.CursosRequest.OrderAsc.HasValue? request.CursosRequest.OrderAsc.Value : true;
+                bool orderBy = request.CursosRequest.OrderAsc.HasValue ? request.CursosRequest.OrderAsc.Value : true;
                 queryable = orderBy ? queryable.OrderBy(orderBySelector) : queryable.OrderByDescending(orderBySelector);
             }
             queryable = queryable.Where(predicate);

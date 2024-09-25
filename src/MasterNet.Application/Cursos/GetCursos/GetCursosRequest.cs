@@ -1,4 +1,6 @@
-namespace MasterNet.Application.Core;
+using MasterNet.Application.Core;
+
+namespace MasterNet.Application.Cursos.GetCursos;
 
 public class GetCursosRequest : PagingParams
 {
