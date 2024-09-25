@@ -2,6 +2,7 @@ using MasterNet.Application.Core;
 using MasterNet.Application.Cursos.CursoCreate;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using static MasterNet.Application.Core.GetCursoQuery;
 using static MasterNet.Application.Cursos.CursoCreate.CursoCreateCommand;
 using static MasterNet.Application.Cursos.CursoReporteExcel.CursoReporteExcel;
 using static MasterNet.Application.Cursos.GetCurso.GetCursoQuery;
@@ -15,6 +16,13 @@ public class CursoController : ControllerBase {
 
     public CursoController(ISender sender) {
         _sender = sender;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> PaginationCursos([FromQuery] GetCursosRequest request, CancellationToken cancellationToken) {
+        var query = new GetCursosQueryRequest{CursosRequest = request};
+        var resultado = await _sender.Send(query, cancellationToken);
+        return resultado.IsSuccess ? Ok(resultado.Value) : NotFound();
     }
 
     [HttpPost("create")]
